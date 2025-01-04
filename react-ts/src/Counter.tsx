@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactNode, useReducer } from "react";
 
-const initState = { count: 0, text: '' };
+const initState = { count: 0, text: "" };
 
 const enum REDUCER_ACTION_TYPE {
 	INCREMENT,
@@ -25,7 +25,7 @@ const reducer = (
 			return { ...state, count: state.count - 1 };
 
 		case REDUCER_ACTION_TYPE.NEW_INPUT:
-			return { ...state, text: action.payload ?? '' };
+			return { ...state, text: action.payload ?? "" };
 
 		default:
 			throw new Error();
@@ -55,7 +55,7 @@ const Counter = ({ children }: ChildrenType) => {
 				<button onClick={decrement}>-</button>
 			</div>
 			<input type="text" onChange={handleTextInput} />
-      <h2>{state.text}</h2>
+			<h2>{state.text}</h2>
 		</>
 	);
 };
