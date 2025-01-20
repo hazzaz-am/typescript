@@ -12,3 +12,23 @@ const mixed: (string | number | boolean)[] = [4, 5, 6, 7, "56", true];
 
 const arrays: Array<number | string> = [3, 4, 5, 6];
 arrays.push("45");
+
+// function with object
+
+type ProductType = {
+	name: string;
+	position: string;
+	active: boolean;
+};
+
+function getData(product: ProductType) {
+	return product;
+}
+
+const demoData = {
+	name: "hazzaz",
+	position: "frontend",
+	active: true,
+};
+
+console.log(getData(demoData));
