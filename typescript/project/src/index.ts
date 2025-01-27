@@ -112,7 +112,7 @@
 // const newProduct = new Product("Watch", 10000, 60);
 // console.log(newProduct);
 
-console.log("Type assertion -------------------------");
+// console.log("Type assertion -------------------------");
 
 /**
  * as: i know what i am doing so just keep the type as i say. this is the thing that "as" do
@@ -141,15 +141,92 @@ console.log("Type assertion -------------------------");
 // image.src =
 // 	"https://images.unsplash.com/photo-1737320372090-c61d2cb88ab3?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-const form = document.getElementById("myForm") as HTMLFormElement;
-const input = document.querySelector("form > input") as HTMLInputElement;
+// const form = document.getElementById("myForm") as HTMLFormElement;
+// const input = document.querySelector("form > input") as HTMLInputElement;
 
-form.onsubmit = (e: SubmitEvent) => {
-	e.preventDefault();
+// form.onsubmit = (e: SubmitEvent) => {
+// 	e.preventDefault();
 
-	const p = document.createElement("p");
-	const body = document.querySelector("body")!;
+// 	const p = document.createElement("p");
+// 	const body = document.querySelector("body")!;
 
-	p.innerText = String(Number(input.value) + 20);
-	body.append(p);
-};
+// 	p.innerText = String(Number(input.value) + 20);
+// 	body.append(p);
+// };
+
+/**
+ * this is one type of type assertion to access key of a object but there is a  issue because user can give any type of key which is not in the object but it is a string than we have to handle error cases
+ */
+// interface Person {
+// 	[key: string]: string;
+// }
+
+// interface Person {
+// 	name: string;
+// 	age: string;
+// }
+
+// const myObj: Person = {
+// 	name: "Hazzaz",
+// 	age: "69",
+// };
+
+// function getName() {
+// 	return myObj.name;
+// }
+
+// getName();
+
+// function getAge() {
+// 	return myObj.age;
+// }
+
+// getAge();
+
+/**
+ *
+ * @param key is a key of Person interface which is now name or email
+ * @returns string
+ */
+// function getValue(key: keyof Person) {
+// 	return myObj[key];
+// }
+
+/**
+ *
+ * @param key is type of myObj key type. We can use this when we don't have the interface and myObj is coming from third party library
+ * @returns
+ */
+
+// function getValue(key: keyof typeof myObj) {
+// 	return myObj[key];
+// }
+
+// getValue("name");
+
+// Utility types
+
+/**
+ *  Partial<Type>
+ */
+// type User = {
+// 	name: string;
+// 	email: string;
+// 	age: number;
+// };
+
+// type User1 = Partial<User>;
+
+// const user1: User = {
+// 	name: "Hazzaz",
+// 	email: "hazzaz@gmail.com",
+// 	age: 20,
+// };
+
+// console.log(user1);
+
+// const user2: User1 = {
+// 	name: "Hazzaz",
+// 	age: 20,
+// };
+// console.log(user2);
