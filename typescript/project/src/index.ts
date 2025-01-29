@@ -204,7 +204,7 @@
 
 // getValue("name");
 
-// Utility types
+// Utility types -------------------------------------
 
 /**
  *  Partial<Type>
@@ -230,3 +230,131 @@
 // 	age: 20,
 // };
 // console.log(user2);
+
+/**
+ *  Required<Type>
+ * make optional type required
+ */
+
+// type User = {
+//   name?: string,
+//   age?: number
+// }
+
+// const user: Required<User> = {
+//   name: 'hazzaz',
+//   age: 34
+// }
+
+/**
+ *  Readonly<Type>
+ * make optional property read only
+ */
+
+// type User = {
+// 	name: string;
+// 	age: number;
+// };
+
+// const user: Readonly<User> = {
+// 	name: "hazzaz",
+// 	age: 34,
+// };
+
+/**
+ *  Record<key, value>
+ * take object keys and set it's value
+ */
+
+// interface User {
+// 	age: number;
+// }
+
+// type Username = "hazzaz" | "amin" | "shafin";
+
+// const abc: Record<Username, User> = {
+// 	hazzaz: {
+// 		age: 56,
+// 	},
+// 	amin: {
+// 		age: 45,
+// 	},
+// 	shafin: {
+// 		age: 45,
+// 	},
+// };
+
+/**
+ *  Pick<type, keys>
+ * take another type as first argument and take second argument for what keys it wanted to take
+ */
+
+// type UserInfo = {
+// 	name: string;
+// 	age: number;
+// 	isActive: boolean;
+// 	posts: string[];
+// };
+
+// const userPosts: Pick<UserInfo, "posts"> = {
+// 	posts: ["my first day at school"],
+// };
+
+/**
+ *  Omit<type, keys>
+ * take another type as first argument and take second argument for what keys it wanted to remove from the type
+ */
+
+// type UserInfo = {
+// 	name: string;
+// 	age: number;
+// 	isActive: boolean;
+// 	posts: string[];
+// };
+
+// const userPosts: Omit<UserInfo, "posts"> = {
+// 	name: "hazzaz",
+// 	age: 45,
+// 	isActive: true,
+// };
+
+/**
+ *  Exclude<union type, excludemembers>
+ * first argument is telling that which arguments are available and second argument is telling that which argument i want to remove
+ */
+
+type ABC = string | number | boolean;
+
+type NewAbc = Exclude<ABC, boolean>;
+
+/**
+ *  Extract<type, union>
+ * first argument is telling the type and second argument is telling that which argument i want to keep
+ */
+
+type LADKJF = string | number | (() => void);
+
+type Jalsdkjf = Extract<LADKJF, Function>;
+
+/**
+ *  NonNullable<type>
+ * take the type and remove all the undefined and null value
+ */
+
+type Non = string | number | boolean | undefined | null;
+
+type Yes = NonNullable<Non>;
+// how to remove null using exclude
+
+type YesE = Exclude<Non, undefined | null>;
+
+/**
+ *  Return<type>
+ * take function type and detact the type
+ */
+
+const hello = (s: string): string => {
+	return s;
+};
+
+type HelloType = ReturnType<typeof hello>;
