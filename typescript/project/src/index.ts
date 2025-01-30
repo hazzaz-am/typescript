@@ -358,3 +358,82 @@ const hello = (s: string): string => {
 };
 
 type HelloType = ReturnType<typeof hello>;
+
+// generics ----------------------------
+
+// const myName = <T>(value: T): T => {
+// 	return value;
+// };
+
+// console.log(myName("hazzaz"));
+// const func = <T, U>(n: T, u: U): { n: T; u: U } => {
+// 	return { n, u };
+// };
+
+// const nice = func("name", 56);
+
+/**
+ * extends keyword refer that you should have the parent types value than you can add you own
+ */
+
+// type Person = {
+// 	name: string;
+// 	age: number;
+// };
+
+// type Person2 = {
+// 	name: string;
+// 	age: number;
+// 	email: string;
+// };
+
+// const hazzaz: Person = {
+// 	name: "hazzaz",
+// 	age: 12,
+// };
+
+// const amin: Person2 = {
+// 	name: "amin",
+// 	age: 5,
+// 	email: "amin@gmail.com",
+// };
+
+// const insan = <T, U extends T>(
+// 	person: T,
+// 	person2: U
+// ): { person: T; person2: U } => {
+// 	return { person, person2 };
+// };
+
+// const insan1 = insan<Person, Person2>(hazzaz, amin);
+
+type Person = {
+	name: string;
+	age: number;
+};
+
+const users: Person[] = [
+	{
+		name: "hazzaz",
+		age: 23,
+	},
+	{
+		name: "amin",
+		age: 34,
+	},
+	{
+		name: "hujjat",
+		age: 34,
+	},
+];
+
+const filterUser = <T, K extends keyof T>(
+	arr: T[],
+	property: K,
+	value: T[K]
+) => {
+	return arr.filter((item) => item[property] === value);
+};
+
+console.log(filterUser(users, "name", "hazzaz"));
+console.log(filterUser(users, "age", 34));
