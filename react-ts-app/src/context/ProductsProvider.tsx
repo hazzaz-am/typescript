@@ -15,7 +15,7 @@ const initialContextState: UseProductsContextType = { products: [] };
 const ProductsContext =
 	createContext<UseProductsContextType>(initialContextState);
 
-type ChildrenType = {
+export type ChildrenType = {
 	children?: ReactElement | ReactElement[];
 };
 
@@ -37,6 +37,7 @@ export const ProductsProvider = ({ children }: ChildrenType) => {
 
 		fetchProducts().then((products) => setProducts(products));
 	}, []);
+
 	return (
 		<ProductsContext.Provider value={{ products }}>
 			{children}
