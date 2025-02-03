@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import goalsLogo from "./assets/goals.jpg";
 import { useState } from "react";
 import CourseGoalList from "./components/CourseGoalList";
+import NewGoal from "./components/NewGoal";
 
 // const menus = [
 //   { id: 1, title: "Home" },
@@ -20,24 +21,30 @@ export type CourseGoalType = {
 const App = () => {
 	const [goals, setGoals] = useState<CourseGoalType[]>([]);
 
-	const handleAddGoal = () => {
+	const handleAddGoal = (title: string, description: string) => {
 		setGoals((prevGoals) => {
 			const newGoal: CourseGoalType = {
-				title: "Learn React",
-				description: "React is a great library",
+				title: title,
+				description: description,
 				id: Math.random(),
 			};
 			return [...prevGoals, newGoal];
 		});
 	};
 
+	const handleDeleteGoal = (id: number) => {
+		setGoals((prevGoals) => {
+			return prevGoals.filter((goal) => goal.id !== id);
+		});
+	}
+
 	return (
 		<main>
 			<Header img={{ src: goalsLogo, alt: "React Logo" }}>
 				<h1>Your Course Goals</h1>
 			</Header>
-			<button onClick={handleAddGoal}>Add Goal</button>
-			<CourseGoalList goals={goals} />
+			<NewGoal onAddGoal={handleAddGoal} />
+			<CourseGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
 		</main>
 	);
 };

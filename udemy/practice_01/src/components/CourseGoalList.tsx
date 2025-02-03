@@ -1,12 +1,17 @@
 import { CourseGoalType } from "../App";
 import CourseGoal from "./CourseGoal";
 
-const CourseGoalList = ({ goals }: { goals: Array<CourseGoalType> }) => {
+type CourseGoalListProps = {
+	goals: Array<CourseGoalType>;
+	onDeleteGoal: (id: number) => void;
+};
+
+const CourseGoalList = ({ goals, onDeleteGoal }: CourseGoalListProps) => {
 	return (
 		<ul>
 			{goals.map((goal) => (
 				<li key={goal.id}>
-					<CourseGoal title={goal.title}>
+					<CourseGoal id={goal.id} title={goal.title} onDelete={onDeleteGoal}>
 						<p>{goal.description}</p>
 					</CourseGoal>
 				</li>
