@@ -16,9 +16,9 @@ const isAnchorElem = (
 
 const Button = (props: ButtonProps | AnchorProps) => {
 	if (isAnchorElem(props)) {
-		return <a className="button" {...props}></a>;
+		return <a className="button" {...props} />;
 	}
 
-	return <button className="button" {...props}></button>;
+	return <button className="button" {...props} />;
 };
 export default Button;
