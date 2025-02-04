@@ -14,7 +14,6 @@ type StateType = {
 };
 
 export const initState: StateType = { count: 0, text: "" };
-
 const enum REDUCER_ACTION_TYPE {
 	INCREMENT,
 	DECREMENT,
