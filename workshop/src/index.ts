@@ -1,6 +1,3 @@
-
-function hello () {
-  return 'Hello World'
-}
-
-console.log(hello());
+// import './array'
+// import './object'
+import './func'
