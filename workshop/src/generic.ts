@@ -7,7 +7,7 @@ functionName<string>("Hazzaz");
 functionName<number>(7777);
 functionName<boolean>(true);
 
-// type inference
+// type inferenceasdf
 functionName("Amin");
 functionName(8888);
 functionName(false);
@@ -47,8 +47,26 @@ type User3 = {
 	lastName: string;
 };
 
-async function fetchUser(): Promise<APIResponse<User3>> {
-	const response = await fetch("https://jsonplaceholder.typicode.com/users");
+type Product3 = {
+	id: string;
+	name: string;
+	price: number;
+	discount: number;
+};
+
+// async function fetchUser(): Promise<APIResponse<User3>> {
+// 	const response = await fetch("https://jsonplaceholder.typicode.com/users");
+// 	const data = await response.json();
+
+// 	return {
+// 		data,
+// 		status: response.status,
+// 		message: response.statusText,
+// 	};
+// }
+
+const fetchData = async <T>(url: string): Promise<APIResponse<T>> => {
+	const response = await fetch(url);
 	const data = await response.json();
 
 	return {
@@ -56,11 +74,24 @@ async function fetchUser(): Promise<APIResponse<User3>> {
 		status: response.status,
 		message: response.statusText,
 	};
-}
+};
 
 async function main() {
-	const user = await fetchUser();
+	const user = await fetchData<User3>(
+		"https://jsonplaceholder.typicode.com/users"
+	);
 	console.log(user.data.firstName);
+
+	const products = await fetchData<Product3>("https://dummyjson.com/products");
+	console.log(products.data.discount);
 }
 
 main();
+
+/**
+ * Record Type
+ */
+
+type ObjType = Record<string, number>;
+
+const obj: ObjType = {};

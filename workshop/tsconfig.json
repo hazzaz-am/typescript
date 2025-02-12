@@ -13,6 +13,6 @@
 			"@src/*": ["src/*"] // Configure path aliases
 		}
 	},
-	"include": ["src/**/*.ts"], // Include all .ts files in the src folder
+	"include": ["src/**/*.ts", "example/processUser.js"], // Include all .ts files in the src folder
 	"exclude": ["node_modules"] // Exclude node_modules from compilation
 }
