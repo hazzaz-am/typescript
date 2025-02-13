@@ -2,4 +2,5 @@
 // import './object'
 // import './func'
 // import './union'
-import './generic'
+// import './generic'
+import './transform'

@@ -32,6 +32,7 @@ const users = [
 ];
 
 const filterCriteria = { age: 20 };
+
 const fieldsToAggregate = ["scores"];
 
 const result = processUserData(users, filterCriteria, fieldsToAggregate);
